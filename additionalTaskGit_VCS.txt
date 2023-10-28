@@ -1,0 +1,28 @@
+# Cloning the Repository:
+$ git clone <repository_url>
+
+# Make sure you are on the "develop" branch and create a new branch for your feature:
+$ git checkout develop
+$ git checkout -b new-feature
+
+# - Work on your new feature and make changes to the code -
+
+# Check the status of your changes (optional) and stage your changes:
+$ git status (optional)
+$ git add .
+$ git status (optional)
+
+# Commit your changes with a descriptive message:
+$ git commit -m "Add a new feature: Description of the feature"
+
+# Push your feature branch to the remote repository (assuming the remote is defined as "origin"):
+$ git push origin new-feature
+
+# - Create a merge-request e.g. in GitHub and wait for review and approval by one or multiple team-members in order to execute the merge-request -
+
+# After successful merge, pull the changes of the updated develop branch:
+$ git checkout develop
+$ git pull origin develop
+
+
+

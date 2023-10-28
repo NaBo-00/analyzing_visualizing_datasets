@@ -1,0 +1,47 @@
+# Compiled Python files
+src/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python environments
+venv/
+env/
+/.python-version
+/.python-version/
+.python-version
+
+# Dependency folders
+lib/
+libs/
+lib64/
+bin/
+include/
+
+# Compiled extensions
+*.so
+*.pyd
+*.dll
+
+# Local development settings (if you use any)
+.env
+.env.*
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# Thumbnails
+._*
+
+# IPython profile
+profile_*
+
+# PyCharm settings (if using PyCharm)
+.idea/
+
+# Editor/IDE configuration
+*.sublime-workspace
+*.code-workspace
