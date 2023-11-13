@@ -10,22 +10,20 @@ from src.data_analyzer import DataAnalyzer
 
 class TestDataAnalyzer(unittest.TestCase):
     def setUp(self):
-        # Create a temporary database file for testing
+        # Create temp db file for testing
         self.db_file = '../db/test.db'
         self.engine = create_engine(f"sqlite:///{self.db_file}")
 
-        # Create the SQLite database file if it doesn't exist
+        # Create SQLite db file if it doesn't exist
         if not os.path.exists(self.db_file):
             open(self.db_file, 'w').close()
 
     def tearDown(self):
-        # Close the database engine to release the file
+        # Close db engine
         self.engine.dispose()
-
-        # Give the database connection time to release the file
         time.sleep(2)
 
-        # Delete test.db
+        # Delete temp test.db
         if os.path.exists(self.db_file):
             os.remove(self.db_file)
 

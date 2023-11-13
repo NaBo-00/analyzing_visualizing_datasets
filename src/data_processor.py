@@ -11,28 +11,28 @@ class DataProcessor(DatabaseConnector):
         to perform data processing tasks, including calculating least squares errors and finding the best fit.
 
         Args:
-            db_file (str): The path to the database file for establishing a database connection.
+            db_file (str): Path to db file.
 
         Attributes:
-            engine (sqlalchemy.engine.base.Engine): The database engine for data operations.
+            engine (sqlalchemy.engine.base.Engine): DB engine for data operations.
 
         Methods:
-            calc_least_squares(y_train, y_ideal): Calculate the least squares error.
-            find_best_fit(train_data, ideal_data): Find the best fit between training and ideal data.
+            calc_least_squares(y_train, y_ideal): Calculate the least squares.
+            find_best_fit(train_data, ideal_data): Find best fit between training and ideal data.
     """
 
     def __init__(self, db_file):
         """
-            Initialize a DataProcessor instance with database connectivity.
+            Initialize a DataProcessor instance including db connection.
 
-            This constructor initializes a DataProcessor instance and establishes a database connection
-            by calling the constructor of the parent class, DatabaseConnector.
+            This constructor initializes a DataProcessor instance and establishes a db connection
+            by calling the DatabaseConnector constructor.
 
             Args:
-                db_file (str): The path to the database file for establishing a database connection.
+                db_file (str): Path to db file.
 
             Attributes:
-                engine (sqlalchemy.engine.base.Engine): The database engine for data operations.
+                engine (sqlalchemy.engine.base.Engine): DB engine for data operations.
         """
 
         super().__init__(db_file)
@@ -40,22 +40,22 @@ class DataProcessor(DatabaseConnector):
     @staticmethod
     def calc_least_squares(y_train, y_ideal):
         """
-            Calculate the least squares error.
+            Calculate the least squares.
 
             Args:
                 y_train (pd.Series): Training data.
                 y_ideal (pd.Series): Ideal data.
 
             Returns:
-                float: Least squares error.
+                float: Least squares.
         """
 
         try:
-            # Calculate the least squares error by summing the squared differences between corresponding data points
+            # Calculate the least squares
             return np.sum((y_train - y_ideal) ** 2)
         except Exception as e:
-            # Handle any exceptions that may occur during least square calculation
-            print(f"An error occurred during least squares calculation: {e}")
+            # Handle exceptions
+            print(f"An error occurred during calc_least_squares(): {e}")
 
     @staticmethod
     def find_best_fit(train_data, ideal_data, engine):
@@ -72,7 +72,7 @@ class DataProcessor(DatabaseConnector):
         """
 
         try:
-            # Initialize a dictionary to store the best fit results
+            # Define dictionary to store the best fit results
             best_fit = {"Training Data Function": [], "Best Ideal Function": [], "Best Least Square Value": []}
 
             # Iterate through the columns of the training data
@@ -86,23 +86,23 @@ class DataProcessor(DatabaseConnector):
                     ideal_column = f'y{j}'
                     ls = DataProcessor.calc_least_squares(train_data[train_column], ideal_data[ideal_column])
 
-                    # Update the best fit information if a lower least squares error is found
+                    # Update best fit result if a lower least squares is found
                     if ls < best_ls:
                         best_ls = ls
                         best_ideal_function = ideal_column
 
-                # Append the best fit information to the results dictionary
+                # Add best fit result to the results dictionary
                 best_fit["Training Data Function"].append(train_column)
                 best_fit["Best Ideal Function"].append(best_ideal_function)
                 best_fit["Best Least Square Value"].append(best_ls)
 
-            # Create a DataFrame from the results dictionary
+            # Create DataFrame from results dictionary
             best_fit_results = pd.DataFrame(best_fit)
 
-            # Create a database table for the best fit results
+            # Create db table for best fit results
             best_fit_results.to_sql("best_fit_results", engine, if_exists='replace', index=False)
 
             return best_fit_results
         except Exception as e:
-            # Handle any exceptions that may occur during finding best fits
-            print(f"An error occurred while finding the best fit: {e}")
+            # Handle exceptions
+            print(f"An error occurred during find_best_fit(): {e}")

@@ -10,10 +10,6 @@ class EmptyCSVError(Exception):
         Attributes:
             file_path (str): The path to the empty CSV file.
             message (str): The error message indicating that the CSV file is empty.
-
-        Example:
-            To raise an EmptyCSVError for an empty CSV file:
-            >>> raise EmptyCSVError('data.csv')
     """
     def __init__(self, file_path):
         """

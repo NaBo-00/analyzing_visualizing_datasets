@@ -6,14 +6,14 @@ class DatabaseConnector:
        DatabaseConnector class for establishing a database connection.
 
        This class provides methods to initialize a database connection by specifying the path
-       to the database file. It uses SQLAlchemy's `create_engine` to create the database engine.
+       to the database file. It uses SQLAlchemy for connection.
 
        Args:
-           db_file (str): Path to the database file.
+           db_file (str): Path to db file.
 
        Attributes:
-           db_file (str): The path to the database file.
-           engine (sqlalchemy.engine.base.Engine): The database engine for data operations.
+           db_file (str): Path to db file.
+           engine (sqlalchemy.engine.base.Engine): DB engine for data operations.
    """
 
     def __init__(self, db_file):
@@ -21,14 +21,14 @@ class DatabaseConnector:
             Initialize DatabaseConnector.
 
             Args:
-                db_file (str): Path to the database file.
+                db_file (str): db file.
         """
         try:
-            # Store the path to the database file
+            # Store db file path
             self.db_file = db_file
 
-            # Create a database engine using SQLAlchemy
+            # Create a db engine using SQLAlchemy
             self.engine = create_engine(f"sqlite:///{db_file}")
         except Exception as e:
-            # Handle any exceptions that may occur during initialization
-            print(f"An error occurred during DatabaseConnector initialization: {e}")
+            # Handle exceptions
+            print(f"An error occurred during initialization of DatabaseConnector: {e}")

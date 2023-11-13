@@ -5,7 +5,7 @@ from bokeh.models import ColumnDataSource
 
 class DataVisualizer:
     """
-        DataVisualizer class for visualizing data, including best fit functions and data mapping.
+        DataVisualizer class for visualizing data.
 
         This class provides static methods to create Bokeh plots for visualizing best fit functions and mapping between
         training and ideal functions. It uses Bokeh library for interactive plotting.
@@ -27,11 +27,11 @@ class DataVisualizer:
                 best_fit_results (pd.DataFrame): Best fit results.
         """
         try:
-            # Create a Bokeh plot
+            # Create Bokeh plot
             x_values = train_data['x']
             p = figure(title="Best Fit Functions", x_axis_label="x", y_axis_label="y")
 
-            # Define colors for the lines in the plot
+            # Define colors for each line
             colors = ['blue', 'green', 'red', 'purple']
 
             # Plot training data functions
@@ -51,15 +51,15 @@ class DataVisualizer:
             p.xaxis.axis_label_text_font_size = "14pt"
             p.yaxis.axis_label_text_font_size = "14pt"
 
-            # Define the output file path
+            # Define and save the output file
             output_path = "graphs/best_fit.html"
-
-            # Save the plot as an HTML file
             output_file(output_path)
-            # Show the plot
+
+            # Show plot
             show(p)
         except Exception as e:
-            print(f"An error occurred during best fit visualization: {e}")
+            # Handle exceptions
+            print(f"An error occurred during visualize_best_fit(): {e}")
 
     @staticmethod
     def visualize_mapping(train_data, ideal_data, best_fit_results, close_datapoints, remaining_data_points):
@@ -71,14 +71,14 @@ class DataVisualizer:
                 ideal_data (pd.DataFrame): Ideal data.
                 best_fit_results (pd.DataFrame): Best fit results.
                 close_datapoints (dict): Close data points.
-                remaining_data_points (np.ndarray): Remaining data points.
+                remaining_data_points (np.array): Remaining data points.
         """
         try:
-            # Create a Bokeh plot
+            # Create Bokeh plot
             x_values = train_data['x']
-            p = figure(title="Training vs Ideal Functions", x_axis_label="x", y_axis_label="y")
+            p = figure(title="Mapping", x_axis_label="x", y_axis_label="y")
 
-            # Define colors for the points in the plot
+            # Define colors for each points
             colors = ['blue', 'green', 'red', 'purple']
 
             # Plot training data functions
@@ -116,14 +116,12 @@ class DataVisualizer:
             p.xaxis.axis_label_text_font_size = "14pt"
             p.yaxis.axis_label_text_font_size = "14pt"
 
-            # Define the output file path
+            # Define and save the output file
             output_path = "graphs/mapping.html"
-
-            # Save the plot as an HTML file
             output_file(output_path)
 
-            # Show the plot
+            # Show plot
             show(p)
         except Exception as e:
-            # Handle any exceptions that may occur during visualization
-            print(f"An error occurred during mapping visualization: {e}")
+            # Handle exceptions
+            print(f"An error occurred during visualize_mapping(): {e}")

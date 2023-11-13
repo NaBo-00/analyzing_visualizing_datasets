@@ -5,7 +5,7 @@ $ git clone <repository_url>
 $ git checkout develop
 $ git checkout -b new-feature
 
-# - Work on your new feature and make changes to the code -
+# - Work on the new feature and make changes to the code -
 
 # Check the status of your changes (optional) and stage your changes:
 $ git status (optional)
