@@ -27,7 +27,7 @@ class TestDataManager(unittest.TestCase):
         self.engine.dispose()
         time.sleep(2)
 
-        # Delete test.db
+        # Delete temp test.db
         if os.path.exists(self.db_file):
             os.remove(self.db_file)
 

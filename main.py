@@ -12,7 +12,7 @@ def main():
         # Define db file path
         db_file = "db/data.db"
 
-        # Initialize data manager, processor, and analyzer
+        # Create data manager, processor, and analyzer Object
         data_manager = DataManager(db_file)
         data_processor = DataProcessor(db_file)
         data_analyzer = DataAnalyzer(db_file)

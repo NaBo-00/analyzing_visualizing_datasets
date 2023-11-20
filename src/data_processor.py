@@ -7,8 +7,8 @@ class DataProcessor(DatabaseConnector):
     """
         DataProcessor class for processing data and inheriting database connectivity.
 
-        This class inherits the database connectivity features from the DatabaseConnector class
-        to perform data processing tasks, including calculating least squares errors and finding the best fit.
+        This class inherits db connectivity from the DatabaseConnector class
+        in order to calculate least squares and finding best fit.
 
         Args:
             db_file (str): Path to db file.
@@ -17,7 +17,7 @@ class DataProcessor(DatabaseConnector):
             engine (sqlalchemy.engine.base.Engine): DB engine for data operations.
 
         Methods:
-            calc_least_squares(y_train, y_ideal): Calculate the least squares.
+            calc_least_squares(y_train, y_ideal): Calculate least squares.
             find_best_fit(train_data, ideal_data): Find best fit between training and ideal data.
     """
 
@@ -25,8 +25,8 @@ class DataProcessor(DatabaseConnector):
         """
             Initialize a DataProcessor instance including db connection.
 
-            This constructor initializes a DataProcessor instance and establishes a db connection
-            by calling the DatabaseConnector constructor.
+            This constructor initializes a DataProcessor instance and creates db connection
+            using the DatabaseConnector constructor.
 
             Args:
                 db_file (str): Path to db file.
@@ -84,11 +84,11 @@ class DataProcessor(DatabaseConnector):
                 # Iterate through the columns of the ideal data
                 for j in range(1, len(ideal_data.columns)):
                     ideal_column = f'y{j}'
-                    ls = DataProcessor.calc_least_squares(train_data[train_column], ideal_data[ideal_column])
+                    least_square = DataProcessor.calc_least_squares(train_data[train_column], ideal_data[ideal_column])
 
                     # Update best fit result if a lower least squares is found
-                    if ls < best_ls:
-                        best_ls = ls
+                    if least_square < best_ls:
+                        best_ls = least_square
                         best_ideal_function = ideal_column
 
                 # Add best fit result to the results dictionary

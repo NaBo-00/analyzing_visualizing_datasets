@@ -7,8 +7,8 @@ class DataManager(DatabaseConnector):
     """
         DataManager class for loading data into db table.
 
-        This class inherits db connectivity features from the DatabaseConnector class and provides a method to load
-        data from a CSV file into a specified table.
+        This class inherits db connectivity from the DatabaseConnector class
+        in order to load data from a CSV file into a specified table.
 
         Args:
             db_file (str): Path to db file.
@@ -23,13 +23,13 @@ class DataManager(DatabaseConnector):
             Initialize a DataManager instance with db connection.
 
             This constructor initializes a DataManager instance and creates db connection
-            by calling the DatabaseConnector constructor.
+            using the DatabaseConnector constructor.
 
             Args:
                 db_file (str): Path to db file.
 
             Attributes:
-                engine (sqlalchemy.engine.base.Engine): DBengine provided by sqlalchemy for data operations.
+                engine (sqlalchemy.engine.base.Engine): DB engine for data operations.
         """
         super().__init__(db_file)
 
@@ -42,7 +42,7 @@ class DataManager(DatabaseConnector):
                 table_name (str): Table name to be created in db.
 
             Returns:
-                pd.DataFrame: Loaded data.
+                pd.DataFrame: Loaded csv data.
         Raises:
         EmptyCSVError: Custom Exception if CSV file is empty.
     """
@@ -56,19 +56,19 @@ class DataManager(DatabaseConnector):
                 raise EmptyCSVError(data_file_path)
 
             # Read the CSV data into a DataFrame
-            data = pd.read_csv(data_file_path)
+            csv_data = pd.read_csv(data_file_path)
 
             # Check if the DataFrame has headers but is empty
-            if data.empty:
+            if csv_data.empty:
                 raise EmptyCSVError(data_file_path)
 
             # Save the data to the specified table in db
-            data.to_sql(table_name, self.engine, if_exists='replace', index=False)
+            csv_data.to_sql(table_name, self.engine, if_exists='replace', index=False)
 
-            return data
+            return csv_data
         except EmptyCSVError as e:
             # Handle Custom Exception for EmptyCSVError
             print(e)
         except Exception as e:
             # Handle other exceptions
-            print(f"An error occurred during load_data_into_table(): {e}") # Print other exceptions
+            print(f"An error occurred during load_data_into_table(): {e}")

@@ -5,8 +5,7 @@ class DatabaseConnector:
     """
        DatabaseConnector class for establishing a database connection.
 
-       This class provides methods to initialize a database connection by specifying the path
-       to the database file. It uses SQLAlchemy for connection.
+       This class offers functions to initialize a database connection using SQLAlchemy.
 
        Args:
            db_file (str): Path to db file.

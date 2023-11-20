@@ -9,13 +9,13 @@ class DataAnalyzer(DatabaseConnector):
         DataAnalyzer class for analyzing test data and calculating close and remaining data points.
 
         This class inherits db connection features from DatabaseConnector class
-        and provides methods to analyze test data by finding close data points and remaining data points.
+        in order to analyze test data and find close and remaining data points.
 
         Args:
             db_file (str): Path to db file.
 
         Methods:
-            analyze_data(test_data, ideal_data, best_fit_results): Analyze the test data and calculate close and remaining data points.
+            analyze_data(test_data, ideal_data, best_fit_results): Analyze the test data.
             find_close_data_points(test_data, ideal_data, best_fit_results, engine): Find close data points in the test data.
             find_remaining_data_points(test_data, close_datapoints): Find remaining data points in the test data.
     """
@@ -25,7 +25,7 @@ class DataAnalyzer(DatabaseConnector):
             Initialize a DataAnalyzer instance with db connection.
 
             This constructor initializes a DataAnalyzer instance and establishes a db connection
-            by calling the DatabaseConnector constructor.
+            using the DatabaseConnector constructor.
 
             Args:
                 db_file (str): Path to db file.
@@ -79,7 +79,7 @@ class DataAnalyzer(DatabaseConnector):
             # Define dictionary for storing close data points for each ideal function
             close_datapoints = {}
 
-            # Calculate maximum deviation (square root of 2)
+            # Define deviation condition
             max_deviation = math.sqrt(2)
 
             # Iterate through test data and check each point against each ideal function
