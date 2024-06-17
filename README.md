@@ -1,4 +1,4 @@
-# DLMDSPWP01 - Data Processing and Visualization Project
+# Data Processing, Analysis and Visualization
 
 ## Project Description
 The purpose of this project is to analyze and visualize data. Its objectives are to process different datasets, determine which training and ideal data sets fit together the best, map test data points to the best fit functions, and visualize the results. The project primarily utilizes Python for interactive visualization and data processing, including SQLAlchemy, Pandas, Numpy, and the Bokeh library.
@@ -56,6 +56,6 @@ The program follows these steps:
 The MIT License governs the use of this project.
 
 ## Author
-- Nareg-Niko Boyagian
+- NaBo
 
 For more details and in-depth documentation, refer to the source code and the specific Python files in the `src/` directory.
