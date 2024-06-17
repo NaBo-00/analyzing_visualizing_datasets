@@ -59,3 +59,9 @@ The MIT License governs the use of this project.
 - NaBo
 
 For more details and in-depth documentation, refer to the source code and the specific Python files in the `src/` directory.
+
+---
+Made by NaBo-00 | Copyright (c) NaBo-00
+
+<!--Made by Na-Bo00 ![Na-Bo00-Logo.jpg](Na-Bo00-Logo.jpg "Na-Bo00-Logo")--!>
+<div><img alt="NaBo-00-logo.png" src="NaBo-00-logo.png" width="100" height="60" /></div>
