@@ -53,7 +53,7 @@ The program follows these steps:
 - and others (listed in `requirements.txt`).
 
 ## License
-The MIT License governs the use of this project.
+This project is licensed under the MIT License. See the LICENSE file for more information.
 
 ## Author
 - NaBo
